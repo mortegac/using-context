@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+
+import Header from './components/header/Header';
+import List from './components/list/list';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const myFirstContext = React.createContext()
+
+// function App() {
+  class App extends Component {
+    constructor(...props) {
+      super(...props)
+      this.data = ['Carmen','Alejandro', 'Ingrid']
+  }
+
+    render()
+  {
+    return (
+      <div className="App">
+        <myFirstContext.Provider value={this.data}>
+          <Header title='Uso de Context'>
+            <List/>
+          </Header>
+        </myFirstContext.Provider>
+      </div>
+    );
+  }
 }
 
 export default App;
